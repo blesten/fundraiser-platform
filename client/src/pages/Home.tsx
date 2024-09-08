@@ -1,4 +1,5 @@
 import HeadInfo from './../utils/HeadInfo'
+import Navbar from './../components/general/Navbar'
 
 const Home = () => {
   return (
@@ -6,7 +7,7 @@ const Home = () => {
       <HeadInfo title='Home' />
       
       <div>
-        <p>Home</p> 
+        <Navbar />
       </div>
     </>
   )
