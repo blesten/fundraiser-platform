@@ -6,10 +6,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;600;700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Poltawski+Nowy:ital,wght@0,400..700;1,400..700&display=swap');
+
 * {
   font-family: 'Poppins', sans-serif;
 }
 
 .quicksand {
   font-family: 'Quicksand', sans-serif !important;
+}
+
+.poltawski {
+  font-family: 'Poltawski Nowy', serif !important;
 }
