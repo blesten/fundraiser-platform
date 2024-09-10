@@ -19,7 +19,7 @@ const Navbar = () => {
     <>
       <div className='flex items-center justify-between'>
         <div className='flex items-center gap-4'>
-          <img src={`${process.env.PUBLIC_URL}/images/logo/colored-logo.svg`} alt='Charity Quest' className='w-8' />
+          <img src={`${process.env.PUBLIC_URL}/images/logo/colored-logo.svg`} alt='Charity Quest' className='w-8 pointer-events-none' />
           <h1 className='quicksand text-secondary font-bold text-lg'>Charity Quest</h1>
         </div>
         <div className='flex items-center gap-7 text-sm flex-1 justify-center'>

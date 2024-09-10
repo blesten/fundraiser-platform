@@ -29,7 +29,7 @@ const SignUp = ({ setAuthScreen }: IProps) => {
   return (
     <>
       <div className='flex items-center justify-center gap-4 bg-primary rounded-lg py-3 px-6'>
-        <img src={`${process.env.PUBLIC_URL}/images/logo/white-logo.svg`} alt='Charity Quest' className='w-5' />
+        <img src={`${process.env.PUBLIC_URL}/images/logo/white-logo.svg`} alt='Charity Quest' className='w-5 pointer-events-none' />
         <h1 className='quicksand font-semibold text-white'>Charity Quest</h1>
       </div>
       <form onSubmit={handleSubmit} className='w-full'>
