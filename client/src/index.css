@@ -28,28 +28,11 @@
   animation: slideDown .2s forwards;
 }
 
-@keyframes opaque {
-  from {
-    opacity: 0;
-    pointer-events: none;
-  }
-  
-  to {
-    opacity: 100;
-    pointer-events: all;
-  }
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-80px);
-    pointer-events: non;
-  }
-
-  to {
-    opacity: 100;
-    transform: translateY(0);
-    pointer-events: all;
-  }
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
