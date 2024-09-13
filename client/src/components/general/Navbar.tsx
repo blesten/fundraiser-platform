@@ -8,6 +8,8 @@ import Authentication from './../auth/Authentication'
 import NavLink from './../navbar/NavLink'
 import Button from './Button'
 import MyDonation from '../profile/MyDonation'
+import MyProfile from '../profile/MyProfile'
+import ChangePassword from '../profile/ChangePassword'
 
 export enum AuthType {
   SignIn,
@@ -17,7 +19,9 @@ export enum AuthType {
 
 const Navbar = () => {
   const [openMyDonation, setOpenMyDonation] = useState(false)
-  
+  const [openMyProfile, setOpenMyProfile] = useState(false)
+  const [openChangePassword, setOpenChangePassword] = useState(false)
+
   const [openProfileDropdown, setOpenProfileDropdown] = useState(false)
   const [authScreen, setAuthScreen] = useState('')
 
@@ -68,7 +72,7 @@ const Navbar = () => {
                   <p className='text-gray-500 font-medium text-xs mt-1'>johndoe@gmail.com</p>
                 </div>
               </div>
-              <FiEdit className='text-orange-500 text-lg' />
+              <FiEdit onClick={() => setOpenMyProfile(true)} className='text-orange-500 text-lg cursor-pointer' />
             </div>
             <div className='w-full h-[1px] bg-gray-300 my-5' />
             <div className='flex flex-col gap-4'>
@@ -80,7 +84,7 @@ const Navbar = () => {
                 <FaHandHoldingHeart className='text-gray-500' />
                 <p className='text-gray-500 font-medium text-sm'>Switch to Fundariser Account</p>
               </div>
-              <div className='flex items-center gap-5 cursor-pointer w-fit'>
+              <div onClick={() => setOpenChangePassword(true)} className='flex items-center gap-5 cursor-pointer w-fit'>
                 <BsFillKeyFill className='text-gray-500' />
                 <p className='text-gray-500 font-medium text-sm'>Change Password</p>
               </div>
@@ -103,6 +107,16 @@ const Navbar = () => {
       <MyDonation
         openMyDonation={openMyDonation}
         setOpenMyDonation={setOpenMyDonation}
+      />
+
+      <MyProfile
+        openMyProfile={openMyProfile}
+        setOpenMyProfile={setOpenMyProfile}
+      />
+
+      <ChangePassword
+        openChangePassword={openChangePassword}
+        setOpenChangePassword={setOpenChangePassword}
       />
     </>
   )
