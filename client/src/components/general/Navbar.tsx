@@ -10,6 +10,7 @@ import Button from './Button'
 import MyDonation from '../profile/MyDonation'
 import MyProfile from '../profile/MyProfile'
 import ChangePassword from '../profile/ChangePassword'
+import SignOut from './SignOut'
 
 export enum AuthType {
   SignIn,
@@ -21,6 +22,7 @@ const Navbar = () => {
   const [openMyDonation, setOpenMyDonation] = useState(false)
   const [openMyProfile, setOpenMyProfile] = useState(false)
   const [openChangePassword, setOpenChangePassword] = useState(false)
+  const [openSignOut, setOpenSignOut] = useState(false)
 
   const [openProfileDropdown, setOpenProfileDropdown] = useState(false)
   const [authScreen, setAuthScreen] = useState('')
@@ -90,7 +92,7 @@ const Navbar = () => {
               </div>
             </div>
             <div className='w-full h-[1px] bg-gray-300 my-5' />
-            <div className='flex items-center gap-5 cursor-pointer w-fit'>
+            <div onClick={() => setOpenSignOut(true)} className='flex items-center gap-5 cursor-pointer w-fit'>
               <MdLogout className='text-gray-500' />
               <p className='text-gray-500 font-medium text-sm'>Logout</p>
             </div>
@@ -117,6 +119,11 @@ const Navbar = () => {
       <ChangePassword
         openChangePassword={openChangePassword}
         setOpenChangePassword={setOpenChangePassword}
+      />
+
+      <SignOut
+        openSignOut={openSignOut}
+        setOpenSignOut={setOpenSignOut}
       />
     </>
   )
