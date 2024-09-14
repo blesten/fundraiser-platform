@@ -21,8 +21,8 @@ const ActivityLog = ({ openActivityLog, setOpenActivityLog }: IProps) => {
   }, [openActivityLog, setOpenActivityLog])
 
   return (
-    <div className={`fixed top-0 left-0 bottom-0 right-0 bg-[rgba(0,0,0,.8)] ${openActivityLog ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} transition`}>
-      <div ref={activityLogRef} className={`w-[500px] h-screen bg-white absolute top-0 right-0 ${openActivityLog ? 'scale-x-100 pointer-events-auto opacity-100' : 'scale-x-0 pointer-events-none opacity-0'} transition delay-150 origin-right p-5 flex flex-col gap-8`}>
+    <div className={`fixed top-0 left-0 bottom-0 z-40 right-0 bg-[rgba(0,0,0,.8)] ${openActivityLog ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} transition`}>
+      <div ref={activityLogRef} className={`sm:w-[500px] w-[300px] h-screen bg-white absolute top-0 right-0 ${openActivityLog ? 'scale-x-100 pointer-events-auto opacity-100' : 'scale-x-0 pointer-events-none opacity-0'} transition origin-right p-5 flex flex-col gap-8`}>
         <div className='flex items-center justify-between'>
           <h1 className='font-medium'>Activity Log</h1>
           <AiOutlineClose onClick={() => setOpenActivityLog(false)} className='cursor-pointer' />
@@ -34,7 +34,7 @@ const ActivityLog = ({ openActivityLog, setOpenActivityLog }: IProps) => {
               <div className='w-[1px] h-full border border-primary border-dashed mt-2' />
             </div>
             <div className='flex-1'>
-              <div className='flex items-center justify-between'>
+              <div className='flex sm:flex-row flex-col sm:items-center sm:gap-0 gap-2 justify-between'>
                 <p className='font-semibold text-secondary'>Charity Program Created</p>
                 <p className='text-gray-500 text-xs font-medium'>12 September 2024</p>
               </div>

@@ -2,7 +2,7 @@ const Notes = () => {
   return (
     <div className='mt-14'>
       <h1 className='text-xl font-medium'>Heartfelt Notes from Supporters</h1>
-      <div className='grid grid-cols-3 gap-7 mt-7'>
+      <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-7 mt-7'>
         <div className='p-5 border border-gray-400 bg-white rounded-lg'>
           <div className='flex items-center justify-between'>
             <div className='flex items-center gap-4'>

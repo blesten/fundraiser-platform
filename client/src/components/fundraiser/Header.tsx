@@ -25,8 +25,10 @@ const Header = () => {
 
   return (
     <>
-      <div className='flex items-center justify-center gap-14 mt-14'>
-        <div className='bg-gray-100 rounded-xl flex-1 h-[450px]'></div>
+      <div className='flex md:flex-row flex-col items-center justify-center lg:gap-14 gap-10 xl:mt-24 mt-20'>
+        <div className='bg-gray-100 rounded-xl flex-1 h-[450px]'>
+          <img src={`${process.env.PUBLIC_URL}/images/banner/first.png`} alt='Charity Quest' className='w-full h-full object-cover rounded-xl border border-gray-300' />
+        </div>
         <div className='flex-1'>
           <div className='mb-6 flex items-center justify-between'>
             <div className='flex items-center gap-3'>
@@ -45,19 +47,19 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <h1 className='font-medium text-3xl leading-relaxed'>Help Turkiye and Syria Earthquare Relief Fund</h1>
-          <p className='text-gray-500 text-sm font-medum leading-relaxed mt-4'>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.</p>
+          <h1 className='font-medium lg:text-3xl text-2xl leading-relaxed'>Help Turkiye and Syria Earthquare Relief Fund</h1>
+          <p className='text-gray-500 lg:text-sm text-xs font-medum leading-relaxed mt-4'>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.</p>
           <div className='flex items-center gap-3 mt-6'>
             <p className='text-3xl font-medium'>${`${20000}`.toLocaleString()}</p>
-            <p className='text-sm font-medium text-gray-500'>raised of ${`${100000}`.toLocaleString()} goal</p>
+            <p className='lg:text-sm text-xs font-medium text-gray-500'>raised of ${`${100000}`.toLocaleString()} goal</p>
           </div>
           <div className='w-full rounded-full h-2 bg-gray-200 mt-5 relative after:content-[ ] after:absolute after:h-2 after:w-1/2 after:rounded-full after:top-0 after:left-0 after:bg-secondary' />
-          <div className='flex items-center justify-between mt-10'>
-            <button onClick={() => setOpenPaymentMethod(true)} className='outline-none bg-secondary hover:bg-primary transition text-white text-sm font-medium px-6 py-3 rounded-full flex items-center gap-4'>
+          <div className='flex sm:flex-row flex-col sm:items-center justify-between mt-10'>
+            <button onClick={() => setOpenPaymentMethod(true)} className='outline-none sm:w-fit w-full bg-secondary hover:bg-primary transition text-white text-sm font-medium px-6 py-3 rounded-full flex items-center justify-center gap-4'>
               <p>Share your Kindness</p>
               <FaHeart />
             </button>
-            <p className='text-sm text-gray-500 font-semibold'>10,580 supporters</p>
+            <p className='lg:text-sm sm:mt-0 mt-3 text-center text-xs text-gray-500 font-semibold'>10,580 supporters</p>
           </div>
         </div>
       </div>

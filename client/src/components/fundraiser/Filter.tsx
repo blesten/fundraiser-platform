@@ -21,7 +21,7 @@ const Filter = ({ openFilter, setOpenFilter }: IProps) => {
   }, [openFilter, setOpenFilter])
 
   return (
-    <div className={`fixed top-0 left-0 bottom-0 right-0 bg-[rgba(0,0,0,.8)] transition z-30 ${openFilter ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+    <div className={`fixed top-0 left-0 bottom-0 right-0 z-40 bg-[rgba(0,0,0,.8)] transition ${openFilter ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
       <div ref={filterRef} className={`absolute top-0 right-0 w-[300px] overflow-auto hide-scrollbar bg-white h-screen transition origin-right ${openFilter ? 'scale-x-100 pointer-events-auto opacity-100' : 'scale-x-0 pointer-events-none opacity-0'} p-7`}>
         <div className='flex items-center justify-end'>
           <AiOutlineClose onClick={() => setOpenFilter(false)} className='cursor-pointer' />

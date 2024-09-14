@@ -63,7 +63,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className={`fixed top-0 left-0 w-full flex lg:px-24 py-7 px-6 items-center justify-between bg-white z-30 ${isFloating ? 'shadow-lg' : ''}`}>
+      <div className={`fixed top-0 left-0 w-full flex lg:px-24 py-7 px-6 items-center justify-between bg-white z-40 ${isFloating ? 'shadow-lg' : ''}`}>
         <Link to='/' className='flex items-center gap-4 outline-none'>
           <img src={`${process.env.PUBLIC_URL}/images/logo/colored-logo.svg`} alt='Charity Quest' className='w-8 pointer-events-none' />
           <h1 className='quicksand text-secondary font-bold text-lg'>Charity Quest</h1>

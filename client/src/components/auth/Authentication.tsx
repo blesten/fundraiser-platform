@@ -24,7 +24,7 @@ const Authentication = ({ authScreen, setAuthScreen }: IProps) => {
   }, [setAuthScreen])
 
   return (
-    <div className={`fixed top-0 left-0 bottom-0 right-0 bg-[rgba(0,0,0,.8)] z-30  flex items-center justify-center ${authScreen !== '' ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} transition md:p-0 p-10`}>
+    <div className={`fixed top-0 left-0 bottom-0 right-0 bg-[rgba(0,0,0,.8)] z-40 flex items-center justify-center ${authScreen !== '' ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} transition md:p-0 p-10`}>
       <div ref={overlayRef} className={`bg-white lg:w-1/3 md:w-1/2 w-full rounded-xl ${authScreen !== '' ? 'opacity-100 translate-y-0 pointer-events-auto p-8' : 'opacity-0 -translate-y-20 pointer-events-none'} delay-150 transition opacity-0 flex flex-col items-center justify-between gap-9`}>
         {
           authScreen === AuthType.SignIn.toString()

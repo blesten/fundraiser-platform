@@ -36,7 +36,7 @@ const MyProfile = ({ openMyProfile, setOpenMyProfile }: IProps) => {
   }, [openMyProfile, setOpenMyProfile])
 
   return (
-    <div className={`fixed top-0 left-0 bottom-0 right-0 bg-[rgba(0,0,0,.8)] flex items-center justify-center ${openMyProfile ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} transition z-30`}>
+    <div className={`fixed top-0 left-0 bottom-0 right-0 bg-[rgba(0,0,0,.8)] flex items-center justify-center ${openMyProfile ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} transition z-40`}>
       <div ref={myProfileRef} className={`w-1/3 bg-white rounded-xl ${openMyProfile ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-20 pointer-events-none'} delay-150 transition`}>
         <div className='flex items-center justify-between px-6 py-4 border-b border-gray-300'>
           <div className='flex items-center gap-4'>
