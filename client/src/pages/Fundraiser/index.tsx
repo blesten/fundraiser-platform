@@ -1,24 +1,37 @@
+import { MdFilterList } from 'react-icons/md'
+import { useState } from 'react'
 import FundraiserCard from './../../components/general/FundraiserCard'
 import HeadInfo from './../../utils/HeadInfo'
 import Navbar from './../../components/general/Navbar'
+import Filter from '../../components/fundraiser/Filter'
+import Footer from '../../components/general/Footer'
 
 const Fundraiser = () => {
+  const [openFilter, setOpenFilter] = useState(false)
+  
   return (
     <>
       <HeadInfo title='Fundraiser' />
 
-      <div className='px-24 py-7'>
+      <div className='lg:px-24 py-7 px-6'>
         <Navbar />
-        {/* <div className='w-full h-[200px] bg-primary mt-14 relative flex items-center justify-center'>
-          <img src={`${process.env.PUBLIC_URL}/images/reset-password/graphic.svg`} alt='Charity Quest' className='w-60 top-2 right-2 absolute' />
-          <img src={`${process.env.PUBLIC_URL}/images/reset-password/graphic.svg`} alt='Charity Quest' className='w-60 bottom-2 left-2 absolute rotate-180' />
+        <div className='w-full h-[200px] bg-primary xl:mt-24 mt-20 relative md:flex hidden items-center justify-center'>
+          <img src={`${process.env.PUBLIC_URL}/images/reset-password/graphic.svg`} alt='Charity Quest' className='w-60 md:block hidden top-2 right-2 absolute' />
+          <img src={`${process.env.PUBLIC_URL}/images/reset-password/graphic.svg`} alt='Charity Quest' className='w-60 md:block hidden bottom-2 left-2 absolute rotate-180' />
           <div className='text-center text-white text-3xl'>
             <h1>Where generosity meets</h1>
             <h1 className='mt-4'>opportunity for lasting impact</h1>
           </div>
-        </div> */}
-        <div className='w-full flex gap-14 mt-12 items-start'>
-          <div className='flex-1'>
+        </div>
+        <div className='w-full flex xl:flex-row flex-col xl:gap-14 gap-10 md:mt-10 mt-20 xl:items-start items-end'>
+          <div className='xl:hidden block sticky top-28 right-0 z-30'>
+            <div onClick={() => setOpenFilter(true)} className='shadow-lg border border-gray-300 bg-white rounded-md flex items-center gap-4 px-4 py-3 cursor-pointer'>
+              <p className='text-sm'>Filter</p>
+              <MdFilterList />
+            </div>
+            <Filter openFilter={openFilter} setOpenFilter={setOpenFilter} />
+          </div>
+          <div className='flex-1 xl:block hidden sticky top-28 left-0'>
             <div className='mb-7'>
               <label htmlFor='search' className='text-sm font-medium'>Search</label>
               <input type='text' id='search' name='search' placeholder='Title' autoComplete='off' className='outline-none border border-gray-400 w-full p-3 rounded-lg text-sm mt-3' />
@@ -71,8 +84,48 @@ const Fundraiser = () => {
               </div>
             </div>
           </div>
-          <div className='flex-[3] flex flex-col items-center gap-10'>
-            <div className='grid grid-cols-3 gap-5'>
+          <div className='flex-[3] flex flex-col items-center gap-10 w-full'>
+            <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-5 gap-10 w-full'>
+              <FundraiserCard
+                title='Fundariser Title Will Goes Here'
+                description='Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.'
+                goals={100000}
+                collectedFund={20000}
+                donatorCount={40500}
+                image=''
+              />
+              <FundraiserCard
+                title='Fundariser Title Will Goes Here'
+                description='Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.'
+                goals={100000}
+                collectedFund={20000}
+                donatorCount={40500}
+                image=''
+              />
+              <FundraiserCard
+                title='Fundariser Title Will Goes Here'
+                description='Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.'
+                goals={100000}
+                collectedFund={20000}
+                donatorCount={40500}
+                image=''
+              />
+              <FundraiserCard
+                title='Fundariser Title Will Goes Here'
+                description='Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.'
+                goals={100000}
+                collectedFund={20000}
+                donatorCount={40500}
+                image=''
+              />
+              <FundraiserCard
+                title='Fundariser Title Will Goes Here'
+                description='Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.'
+                goals={100000}
+                collectedFund={20000}
+                donatorCount={40500}
+                image=''
+              />
               <FundraiserCard
                 title='Fundariser Title Will Goes Here'
                 description='Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.'
@@ -149,6 +202,7 @@ const Fundraiser = () => {
             <button className='bg-secondary text-white font-semibold text-sm rounded-full px-6 py-3 hover:bg-primary transition'>Load More</button>
           </div>
         </div>
+        <Footer />
       </div>
     </>
   )

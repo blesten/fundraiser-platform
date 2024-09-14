@@ -12,7 +12,7 @@ interface IProps {
 
 const FundraiserCard = ({ image, title, description, collectedFund, goals, donatorCount }: IProps) => {
   return (
-    <Link to={`/fundraiser/dad`} className='rounded-xl border border-gray-300 p-4 hover:scale-105 transition'>
+    <Link to={`/fundraiser/dad`} className='rounded-xl border border-gray-300 p-4 hover:scale-105 transition outline-none'>
       <div className='rounded-xl h-48 bg-gray-200'></div>
       <h1 className='font-medium text-lg leading-relaxed mt-4'>{title.length > 45 ? `${title.substring(0, 45)} ...` : title}</h1>
       <p className='mt-3 text-xs text-gray-400'>{description.length > 40 ? `${description.substring(0, 40)} ...` : description}</p>
