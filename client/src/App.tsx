@@ -4,6 +4,7 @@ import Fundraiser from './pages/Fundraiser'
 import Home from './pages/Home'
 import FundraiserDetail from './pages/Fundraiser/Detail'
 import ScrollToTop from './utils/ScrollToTop'
+import NotFound from './components/general/NotFound'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path='/fundraiser' element={<Fundraiser />} />
         <Route path='/reset-password' element={<ResetPassword />} />
         <Route path='/fundraiser/:id' element={<FundraiserDetail />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </Router>
   )

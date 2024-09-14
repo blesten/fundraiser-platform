@@ -24,7 +24,7 @@ const Fundraiser = () => {
           </div>
         </div>
         <div className='w-full flex xl:flex-row flex-col xl:gap-14 gap-10 md:mt-10 mt-20 xl:items-start items-end'>
-          <div className='xl:hidden block sticky top-28 right-0 z-30'>
+          <div className='xl:hidden block sticky top-28 right-0 z-40'>
             <div onClick={() => setOpenFilter(true)} className='shadow-lg border border-gray-300 bg-white rounded-md flex items-center gap-4 px-4 py-3 cursor-pointer'>
               <p className='text-sm'>Filter</p>
               <MdFilterList />
