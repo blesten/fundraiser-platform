@@ -11,6 +11,7 @@ import MyDonation from '../profile/MyDonation'
 import MyProfile from '../profile/MyProfile'
 import ChangePassword from '../profile/ChangePassword'
 import SignOut from './SignOut'
+import SwitchToFundraiser from '../profile/SwitchToFundraiser'
 
 export enum AuthType {
   SignIn,
@@ -22,6 +23,7 @@ const Navbar = () => {
   const [openMyDonation, setOpenMyDonation] = useState(false)
   const [openMyProfile, setOpenMyProfile] = useState(false)
   const [openChangePassword, setOpenChangePassword] = useState(false)
+  const [openSwitchToFundraiser, setOpenSwitchToFundraiser] = useState(false)
   const [openSignOut, setOpenSignOut] = useState(false)
 
   const [openProfileDropdown, setOpenProfileDropdown] = useState(false)
@@ -82,7 +84,7 @@ const Navbar = () => {
                 <FaHeart className='text-gray-500' />
                 <p className='text-gray-500 font-medium text-sm'>My Donation</p>
               </div>
-              <div className='flex items-center gap-5 cursor-pointer w-fit'>
+              <div onClick={() => setOpenSwitchToFundraiser(true)} className='flex items-center gap-5 cursor-pointer w-fit'>
                 <FaHandHoldingHeart className='text-gray-500' />
                 <p className='text-gray-500 font-medium text-sm'>Switch to Fundariser Account</p>
               </div>
@@ -119,6 +121,11 @@ const Navbar = () => {
       <ChangePassword
         openChangePassword={openChangePassword}
         setOpenChangePassword={setOpenChangePassword}
+      />
+
+      <SwitchToFundraiser
+        openSwitchToFundraiser={openSwitchToFundraiser}
+        setOpenSwitchToFundraiser={setOpenSwitchToFundraiser}
       />
 
       <SignOut
