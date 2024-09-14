@@ -54,7 +54,7 @@ const Navbar = () => {
           <div className='w-1 h-1 rounded-full bg-black' />
           <NavLink to='/' content='About Us' active={false} />
           <div className='w-1 h-1 rounded-full bg-black' />
-          <NavLink to='/' content='Donate Now' active={pathname === '/fundraiser' ? true : false} />
+          <NavLink to='/fundraiser' content='Donate Now' active={pathname === '/fundraiser' ? true : false} />
         </div>
         <div ref={profileDropdownRef} className='relative'>
           <div onClick={() => setOpenProfileDropdown(!openProfileDropdown)} className='flex items-center gap-3 cursor-pointer'>
