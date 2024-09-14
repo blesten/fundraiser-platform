@@ -11,7 +11,7 @@ const Home = () => {
     <>
       <HeadInfo title='Home' />
       
-      <div className='px-24 py-7'>
+      <div className='lg:px-24 py-7 px-6'>
         <Navbar />
         <Banner />
         <Start />

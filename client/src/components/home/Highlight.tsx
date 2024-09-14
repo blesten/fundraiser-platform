@@ -4,7 +4,7 @@ const Highlight = () => {
   return (
     <div className='mt-20'>
       <h1 className='font-semibold text-2xl'>Fundraisers in Need</h1>
-      <div className='mt-8 grid grid-cols-4 gap-10'>
+      <div className='mt-8 grid xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-10'>
         <FundraiserCard
           image=''
           title='Help Turkiye and Syria Earthquake Relief Fund'

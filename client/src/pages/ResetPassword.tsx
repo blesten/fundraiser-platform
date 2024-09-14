@@ -27,14 +27,14 @@ const ResetPassword = () => {
       <HeadInfo title='Reset Password' />
 
       <div className='flex h-screen'>
-        <div className='flex-1 flex flex-col p-12'>
+        <div className='flex-1 flex flex-col md:p-12 p-5'>
           <div className='flex items-center gap-4'>
             <img src={`${process.env.PUBLIC_URL}/images/logo/colored-logo.svg`} alt='Charity Quest' className='w-8 pointer-events-none' />
             <h1 className='quicksand text-secondary font-bold text-lg'>Charity Quest</h1>
           </div>
           <div className='flex-1 flex flex-col justify-center'>
-            <h1 className='text-3xl font-medium'>Reset Password</h1>
-            <p className='text-sm text-gray-500 mt-3'>Reset password for stxxxxxxts@gmail.com</p>
+            <h1 className='text-3xl font-medium md:text-left text-center'>Reset Password</h1>
+            <p className='text-sm text-gray-500 mt-3 md:text-left text-center'>Reset password for stxxxxxxts@gmail.com</p>
             <form onSubmit={handleSubmit} className='mt-10'>
               <div className='mb-7'>
                 <label htmlFor='password' className='text-sm'>Password</label>
@@ -62,14 +62,14 @@ const ResetPassword = () => {
             </form>
           </div>
         </div>
-        <div className='flex-[2] bg-primary px-12 pt-12 pb-6 flex flex-col justify-between relative'>
+        <div className='flex-[2] bg-primary px-12 pt-12 pb-6 md:flex hidden flex-col justify-between relative'>
           <img src={`${process.env.PUBLIC_URL}/images/reset-password/graphic.svg`} alt='Charity Quest' className='w-96 absolute top-2 right-2 pointer-events-none' />
           <img src={`${process.env.PUBLIC_URL}/images/reset-password/graphic.svg`} alt='Charity Quest' className='w-96 absolute bottom-2 left-2 rotate-180 pointer-events-none' />
           <div className='flex items-center gap-4'>
             <img src={`${process.env.PUBLIC_URL}/images/logo/white-logo.svg`} alt='Charity Quest' className='w-8 pointer-events-none' />
             <h1 className='quicksand text-white font-bold text-lg'>Charity Quest</h1>
           </div>
-          <div className='text-center flex flex-col gap-7 font-medium text-4xl text-white'>
+          <div className='text-center flex flex-col gap-7 font-medium md:text-4xl text-white'>
             <h1>Where generosity meets</h1>
             <h1>opportunity for lasting impact</h1>
           </div>
