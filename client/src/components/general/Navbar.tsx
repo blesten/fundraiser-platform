@@ -78,7 +78,7 @@ const Navbar = () => {
             <div className='w-1 h-1 rounded-full bg-black' />
             <NavLink to='/fundraiser' content='Donate Now' active={pathname === '/fundraiser' ? true : false} />
           </div>
-          {/* <div ref={profileDropdownRef} className='relative'>
+          <div ref={profileDropdownRef} className='relative'>
             <div onClick={() => setOpenProfileDropdown(!openProfileDropdown)} className='flex items-center gap-3 cursor-pointer'>
               <div className='bg-secondary text-white w-10 h-10 rounded-full flex items-center justify-center'>
                 <p className='font-medium text-lg'>JD</p>
@@ -119,8 +119,8 @@ const Navbar = () => {
                 <p className='text-gray-500 font-medium text-sm'>Logout</p>
               </div>
             </div>
-          </div> */}
-          <Button className='bg-secondary hover:bg-primary transition text-white px-5 py-2' content='Sign In' onClick={() => {setAuthScreen(AuthType.SignIn.toString())}} />
+          </div>
+          {/* <Button className='bg-secondary hover:bg-primary transition text-white px-5 py-2' content='Sign In' onClick={() => {setAuthScreen(AuthType.SignIn.toString())}} /> */}
         </div>
       </div>
 

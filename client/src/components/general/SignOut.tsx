@@ -21,12 +21,12 @@ const SignOut = ({ openSignOut, setOpenSignOut }: IProps) => {
   }, [openSignOut, setOpenSignOut])
 
   return (
-    <div className={`fixed top-0 left-0 bottom-0 right-0 bg-[rgba(0,0,0,.8)] transition ${openSignOut ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} flex items-center justify-center z-30`}>
-      <div ref={signOutRef} className='w-1/3 rounded-lg p-10 flex flex-col items-center justify-center bg-white gap-8'>
+    <div className={`fixed top-0 left-0 bottom-0 right-0 bg-[rgba(0,0,0,.8)] z-40 transition ${openSignOut ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} flex items-center justify-center md:p-0 p-10`}>
+      <div ref={signOutRef} className='lg:w-1/3 md:w-1/2 w-full rounded-lg md:p-10 px-3 py-8 flex flex-col items-center justify-center bg-white gap-8'>
         <div className='bg-orange-500 w-28 h-28 rounded-full flex items-center justify-center'>
           <MdQuestionMark className='text-white text-7xl' />
         </div>
-        <p className='text-gray-600'>Are you sure want to sign out?</p>
+        <p className='text-center text-gray-600'>Are you sure want to sign out?</p>
         <div className='flex items-center gap-6 justify-center'>
           <button onClick={() => setOpenSignOut(false)} className='bg-gray-100 outline-none px-6 py-3 rounded-lg text-sm text-gray-400'>No, I&apos;m not</button>
           <button className='bg-red-500 outline-none px-6 py-3 hover:bg-red-600 transition rounded-lg text-sm text-white'>Yes, I&apos;m sure</button>
