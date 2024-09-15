@@ -33,7 +33,7 @@ const NewProgram = ({ openNewProgram, setOpenNewProgram }: IProps) => {
   }, [openNewProgram, setOpenNewProgram])
 
   return (
-    <div className={`fixed top-0 left-0 bottom-0 right-0 z-40 bg-[rgba(0,0,0,.8)] transition ${openNewProgram ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+    <div className={`fixed top-0 left-0 bottom-0 right-0 z-50 bg-[rgba(0,0,0,.8)] transition ${openNewProgram ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
       <div ref={newProgramRef} className={`absolute top-0 right-0 w-[400px] overflow-auto hide-scrollbar bg-white h-screen transition origin-right ${openNewProgram ? 'scale-x-100 pointer-events-auto opacity-100' : 'scale-x-0 pointer-events-none opacity-0'} p-5`}>
         <div className='flex items-center justify-between'>
           <h1 className='font-medium'>Create Charity Program</h1>

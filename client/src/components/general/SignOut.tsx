@@ -21,7 +21,7 @@ const SignOut = ({ openSignOut, setOpenSignOut }: IProps) => {
   }, [openSignOut, setOpenSignOut])
 
   return (
-    <div className={`fixed top-0 left-0 bottom-0 right-0 bg-[rgba(0,0,0,.8)] z-40 transition ${openSignOut ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} flex items-center justify-center md:p-0 p-10`}>
+    <div className={`fixed top-0 left-0 bottom-0 right-0 bg-[rgba(0,0,0,.8)] z-50 transition ${openSignOut ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} flex items-center justify-center md:p-0 p-10`}>
       <div ref={signOutRef} className='lg:w-1/3 md:w-1/2 w-full rounded-lg md:p-10 px-3 py-8 flex flex-col items-center justify-center bg-white gap-8'>
         <div className='bg-orange-500 w-28 h-28 rounded-full flex items-center justify-center'>
           <MdQuestionMark className='text-white text-7xl' />

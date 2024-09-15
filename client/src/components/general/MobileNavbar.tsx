@@ -28,7 +28,7 @@ const MobileNavbar = ({ openMobileNavbar, setOpenMobileNavbar, setAuthScreen }: 
   }, [openMobileNavbar, setOpenMobileNavbar])
 
   return (
-    <div className={`fixed top-0 left-0 bottom-0 right-0 z-30 bg-[rgba(0,0,0,.8)] transition ${openMobileNavbar ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+    <div className={`fixed top-0 left-0 bottom-0 right-0 z-50 bg-[rgba(0,0,0,.8)] transition ${openMobileNavbar ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
       <div ref={mobileNavbarRef} className={`absolute top-0 right-0 bg-white h-screen w-[250px] transition origin-right ${openMobileNavbar ? 'opacity-100 scale-x-100 pointer-events-auto' : 'opacity-0 scale-x-0 pointer-events-none'} p-7`}>
         <div className='flex items-center justify-end'>
           <AiOutlineClose onClick={() => setOpenMobileNavbar(false)} className='cursor-pointer' />

@@ -52,7 +52,7 @@ const FundraiserAccount = ({ children }: IProps) => {
               <FaHandHoldingHeart className='text-xl' />
               <p>Charity Program</p>
             </Link>
-            <Link to='/dashboard' className={`outline-none flex items-center gap-3 w-fit hover:text-white ${pathname === '/' ? 'text-white font-semibold' : 'text-gray-300'}`}>
+            <Link to='/withdrawal-account' className={`outline-none flex items-center gap-3 w-fit hover:text-white ${pathname === '/withdrawal-account' ? 'text-white font-semibold' : 'text-gray-300'}`}>
               <PiBankFill className='text-xl' />
               <p>Withdrawal Account</p>
             </Link>

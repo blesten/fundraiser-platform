@@ -23,7 +23,7 @@ const PaymentMethod = ({ openPaymentMethod, setOpenPaymentMethod }: IProps) => {
   }, [openPaymentMethod, setOpenPaymentMethod])
 
   return (
-    <div className={`fixed top-0 left-0 bottom-0 right-0 z-40 bg-[rgba(0,0,0,.8)] ${openPaymentMethod ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} transition`}>
+    <div className={`fixed top-0 left-0 bottom-0 right-0 z-50 bg-[rgba(0,0,0,.8)] ${openPaymentMethod ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} transition`}>
       <div ref={paymentMethodRef} className={`sm:w-[420px] w-[350px] h-screen bg-white absolute top-0 right-0 ${openPaymentMethod ? 'scale-x-100 pointer-events-auto opacity-100' : 'scale-x-0 pointer-events-none opacity-0'} transition origin-right p-5 flex flex-col`}>
         <div className='flex items-center justify-between border-b border-gray-300 pb-4'>
           <div className='flex items-center gap-4'>

@@ -85,7 +85,7 @@ const Navbar = () => {
               </div>
               <p className='font-medium'>John Doe</p>
             </div>
-            <div className={`absolute w-[300px] rounded-lg shadow-lg p-5 top-full right-0 mt-3 border border-gray-300 bg-white z-10 ${openProfileDropdown ? 'scale-y-100 pointer-events-auto opacity-100' : 'scale-y-0 opacity-0 pointer-events-none'} origin-top transition`}>
+            <div className={`absolute w-[300px] rounded-lg shadow-lg p-5 top-full right-0 mt-3 border border-gray-300 bg-white z-50 ${openProfileDropdown ? 'scale-y-100 pointer-events-auto opacity-100' : 'scale-y-0 opacity-0 pointer-events-none'} origin-top transition`}>
               <div className='flex items-center justify-between'>
                 <div className='flex items-center gap-3'>
                   <div className='bg-secondary text-white w-10 h-10 rounded-full flex items-center justify-center'>

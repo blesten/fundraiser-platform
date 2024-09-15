@@ -23,7 +23,7 @@ const MyDonation = ({ openMyDonation, setOpenMyDonation }: IProps) => {
   }, [openMyDonation, setOpenMyDonation])
 
   return (
-    <div className={`fixed top-0 left-0 bottom-0 right-0 bg-[rgba(0,0,0,.8)] flex items-center justify-center ${openMyDonation ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} z-40 transition md:p-0 p-5`}>
+    <div className={`fixed top-0 left-0 bottom-0 right-0 bg-[rgba(0,0,0,.8)] flex items-center justify-center ${openMyDonation ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} z-50 transition md:p-0 p-5`}>
       <div ref={myDonationRef} className={`md:w-[68vw] w-full bg-white rounded-xl ${openMyDonation ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-20 pointer-events-none'} delay-150 transition max-h-[90vh]`}>
         <div className='flex items-center justify-between px-6 py-4 border-b border-gray-300'>
           <div className='flex items-center gap-4'>

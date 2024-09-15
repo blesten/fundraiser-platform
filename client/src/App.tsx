@@ -7,6 +7,7 @@ import ScrollToTop from './utils/ScrollToTop'
 import NotFound from './components/general/NotFound'
 import FundraiserDashboard from './pages/FundraiserDashboard'
 import CharityProgram from './pages/CharityProgram'
+import WithdrawalAccount from './pages/WithdrawalAccount'
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path='/reset-password' element={<ResetPassword />} />
         <Route path='/dashboard' element={<FundraiserDashboard />} />
         <Route path='/charity-program' element={<CharityProgram />} />
+        <Route path='/withdrawal-account' element={<WithdrawalAccount />} />
         <Route path='/fundraiser/:id' element={<FundraiserDetail />} />
         <Route path='*' element={<NotFound />} />
       </Routes>

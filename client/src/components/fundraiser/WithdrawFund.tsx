@@ -23,7 +23,7 @@ const WithdrawFund = ({ openWithdrawFund, setOpenWithdrawFund }: IProps) => {
   }, [openWithdrawFund, setOpenWithdrawFund])
 
   return (
-    <div className={`fixed top-0 left-0 bottom-0 right-0 z-40 bg-[rgba(0,0,0,.8)] transition ${openWithdrawFund ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+    <div className={`fixed top-0 left-0 bottom-0 right-0 z-50 bg-[rgba(0,0,0,.8)] transition ${openWithdrawFund ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
       <div ref={withdrawFundRef} className={`absolute top-0 right-0 w-[400px] bg-white h-screen overflow-auto hide-scrollbar ${openWithdrawFund ? 'scale-x-100 opacity-100 pointer-events-auto' : 'scale-x-0 opacity-0 pointer-events-none'} transition origin-right p-7 overflow-auto hide-scrollbar`}>
         <div className='flex items-center justify-between'>
           <h1 className='font-medium'>Withdraw Funds</h1>

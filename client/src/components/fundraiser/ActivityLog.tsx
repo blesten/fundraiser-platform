@@ -21,7 +21,7 @@ const ActivityLog = ({ openActivityLog, setOpenActivityLog }: IProps) => {
   }, [openActivityLog, setOpenActivityLog])
 
   return (
-    <div className={`fixed top-0 left-0 bottom-0 z-40 right-0 bg-[rgba(0,0,0,.8)] ${openActivityLog ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} transition`}>
+    <div className={`fixed top-0 left-0 bottom-0 z-50 right-0 bg-[rgba(0,0,0,.8)] ${openActivityLog ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} transition`}>
       <div ref={activityLogRef} className={`sm:w-[500px] w-[300px] h-screen bg-white absolute top-0 right-0 ${openActivityLog ? 'scale-x-100 pointer-events-auto opacity-100' : 'scale-x-0 pointer-events-none opacity-0'} transition origin-right p-5 flex flex-col gap-8`}>
         <div className='flex items-center justify-between'>
           <h1 className='font-medium'>Activity Log</h1>
