@@ -4,9 +4,10 @@ import { AiOutlineClose } from 'react-icons/ai'
 interface IProps {
   openFilter: boolean
   setOpenFilter: React.Dispatch<React.SetStateAction<boolean>>
+  isAdmin?: boolean
 }
 
-const Filter = ({ openFilter, setOpenFilter }: IProps) => {
+const Filter = ({ openFilter, setOpenFilter, isAdmin }: IProps) => {
   const filterRef = useRef() as React.MutableRefObject<HTMLDivElement>
 
   useEffect(() => {
@@ -64,6 +65,26 @@ const Filter = ({ openFilter, setOpenFilter }: IProps) => {
               </div>
             </div>
           </div>
+          {
+            isAdmin &&
+            <div className='mb-7'>
+              <label htmlFor='category' className='text-sm font-medium'>Status</label>
+              <div className='mt-5 flex flex-col gap-4'>
+                <div className='flex items-center gap-3'>
+                  <input type='checkbox' />
+                  <label htmlFor='educationSupport' className='text-sm'>Active</label>
+                </div>
+                <div className='flex items-center gap-3'>
+                  <input type='checkbox' />
+                  <label htmlFor='educationSupport' className='text-sm'>In Review</label>
+                </div>
+                <div className='flex items-center gap-3'>
+                  <input type='checkbox' />
+                  <label htmlFor='educationSupport' className='text-sm'>Reject</label>
+                </div>
+              </div>
+            </div>
+          }
           <div className='mb-7'>
             <p className='text-sm font-medium'>Sort by Date</p>
             <div className='flex items-center gap-2 mt-4'>

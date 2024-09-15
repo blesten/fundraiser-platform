@@ -48,7 +48,7 @@ const FundraiserAccount = ({ children }: IProps) => {
               <MdDashboard className='text-xl' />
               <p>Dashboard</p>
             </Link>
-            <Link to='/dashboard' className={`outline-none flex items-center gap-3 w-fit hover:text-white ${pathname === '/' ? 'text-white font-semibold' : 'text-gray-300'}`}>
+            <Link to='/charity-program' className={`outline-none flex items-center gap-3 w-fit hover:text-white ${pathname === '/charity-program' ? 'text-white font-semibold' : 'text-gray-300'}`}>
               <FaHandHoldingHeart className='text-xl' />
               <p>Charity Program</p>
             </Link>

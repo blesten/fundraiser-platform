@@ -34,7 +34,7 @@ const FundraiserDashboard = () => {
         </div>
         <div className='mt-8'>
           <h1 className='font-medium text-lg'>Recent Charity Program</h1>
-          <div className='grid grid-cols-3 gap-4 mt-4'>
+          <div className='grid grid-cols-3 gap-8 mt-4'>
             <FundraiserCard
               title='Fundraiser Title Will Goes Here Later'
               collectedFund={10000}
