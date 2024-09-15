@@ -38,7 +38,21 @@ const FundraiserAccount = ({ children }: IProps) => {
   return (
     <>
       <div className='flex h-screen'>
-        <div className='flex-1 bg-primary p-7 sticky top-0 left-0'>
+        <div className='fixed bottom-0 left-0 w-full bg-primary md:px-32 px-3 pt-3 pb-1 lg:hidden flex items-center justify-between z-30'>
+          <Link to='/dashboard' className={`flex flex-col items-center w-fit hover:text-white hover:font-semibold ${pathname === '/dashboard' ? 'text-white font-semibold' : 'text-gray-400'}`}>
+            <MdDashboard className='text-2xl' />
+            <p className='mt-2 text-sm'>Dashboard</p>
+          </Link>
+          <Link to='/charity-program' className={`flex flex-col items-center w-fit hover:text-white hover:font-semibold ${pathname === '/charity-program' ? 'text-white font-semibold' : 'text-gray-400'}`}>
+            <FaHandHoldingHeart className='text-2xl' />
+            <p className='mt-2 text-sm text-center'>Charity Program</p>
+          </Link>
+          <Link to='/withdrawal-account' className={`flex flex-col items-center w-fit hover:text-white hover:font-semibold ${pathname === '/withdrawal-account' ? 'text-white font-semibold' : 'text-gray-400'}`}>
+            <PiBankFill className='text-2xl' />
+            <p className='mt-2 text-sm text-center'>Withdrawal Account</p>
+          </Link>
+        </div>
+        <div className='lg:block hidden flex-1 bg-primary p-7 sticky top-0 left-0'>
           <div className='flex items-center gap-3'>
             <img src={`${process.env.PUBLIC_URL}/images/logo/white-logo.svg`} alt='Charity Quest' className='w-6' />
             <h1 className='text-white quicksand font-semibold'>Charity Quest</h1>
@@ -59,7 +73,11 @@ const FundraiserAccount = ({ children }: IProps) => {
           </div>
         </div>
         <div className='flex-[4] flex flex-col'>
-          <div className='w-full border-b border-gray-400 bg-white px-10 py-4 flex justify-end sticky top-0 right-0'>
+          <div className='w-full border-b border-gray-400 bg-white px-10 py-4 flex lg:justify-end justify-between sticky top-0 right-0'>
+            <div className='lg:hidden flex items-center gap-4 outline-none'>
+              <img src={`${process.env.PUBLIC_URL}/images/logo/colored-logo.svg`} alt='Charity Quest' className='w-6 pointer-events-none' />
+              <h1 className='quicksand text-secondary font-bold'>Charity Quest</h1>
+            </div>
             <div ref={profileDropdownRef} className='relative'>
               <div onClick={() => setOpenProfileDropdown(!openProfileDropdown)} className='flex items-center gap-3 cursor-pointer'>
                 <div className='bg-secondary text-white w-9 h-9 rounded-full flex items-center justify-center'>

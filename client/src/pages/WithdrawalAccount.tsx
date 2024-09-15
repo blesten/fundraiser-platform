@@ -19,7 +19,7 @@ const WithdrawalAccount = () => {
             <p>New Account</p>
           </button>
         </div>
-        <div className='mt-8'>
+        <div className='mt-8 overflow-x-auto w-full'>
           <table className='text-sm w-full'>
             <thead>
               <tr className='bg-primary text-white font-medium text-center'>
@@ -39,8 +39,8 @@ const WithdrawalAccount = () => {
                 <td>1234567890</td>
                 <td>Lorem Ipsum</td>
                 <td>12/28</td>
-                <td className='flex mt-2 justify-center'>
-                  <div className='font-medium text-xs text-white bg-secondary px-3 py-1 rounded-md w-fit'>Active</div>
+                <td>
+                  <div className='m-auto font-medium text-xs text-white bg-secondary px-3 py-1 rounded-md w-fit'>Active</div>
                 </td>
                 <td>
                   <FaTrash onClick={() => setOpenDelete(true)} className='text-red-500 m-auto cursor-pointer' />

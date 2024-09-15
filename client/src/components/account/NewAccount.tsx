@@ -23,7 +23,7 @@ const NewAccount = ({ openNewAccount, setOpenNewAccount }: IProps) => {
 
   return (
     <div className={`fixed top-0 left-0 bottom-0 right-0 z-50 bg-[rgba(0,0,0,.8)] transition ${openNewAccount ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-      <div ref={newAccountRef} className={`absolute top-0 right-0 h-screen bg-white w-[400px] transition origin-right p-7 ${openNewAccount ? 'scale-x-100 opacity-100 pointer-events-auto' : 'scale-x-0 opacity-0 pointer-events-none'}`}>
+      <div ref={newAccountRef} className={`absolute top-0 right-0 h-full bg-white sm:w-[400px] w-[350px] transition origin-right p-7 ${openNewAccount ? 'scale-x-100 opacity-100 pointer-events-auto' : 'scale-x-0 opacity-0 pointer-events-none'}`}>
         <div className='flex items-center justify-between'>
           <h1 className='font-medium'>New Withdrawal Account</h1>
           <AiOutlineClose onClick={() => setOpenNewAccount(false)} className='cursor-pointer' />

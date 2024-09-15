@@ -21,8 +21,8 @@ const Delete = ({ openDelete, setOpenDelete }: IProps) => {
   }, [openDelete, setOpenDelete])
 
   return (
-    <div className={`fixed top-0 left-0 bottom-0 right-0 z-50 bg-[rgba(0,0,0,.8)] transition ${openDelete ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} flex items-center justify-center`}>
-      <div ref={deleteRef} className='w-1/3 bg-white p-5 rounded-lg flex flex-col items-center justify-center gap-6'>
+    <div className={`fixed top-0 left-0 bottom-0 right-0 z-50 bg-[rgba(0,0,0,.8)] transition ${openDelete ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} flex items-center justify-center md:p-0 p-10`}>
+      <div ref={deleteRef} className='lg:w-1/3 md:w-1/2 w-full bg-white p-5 rounded-lg flex flex-col items-center justify-center gap-6'>
         <div className='bg-orange-500 w-28 h-28 rounded-full flex items-center justify-center'>
           <MdQuestionMark className='text-white text-7xl' />
         </div>

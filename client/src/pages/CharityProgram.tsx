@@ -16,9 +16,9 @@ const CharityProgram = () => {
       <HeadInfo title='Charity Program' />
 
       <FundraiserAccount>
-        <div className='flex items-center justify-between'>
+        <div className='flex sm:flex-row flex-col sm:items-center items-start justify-between'>
           <h1 className='font-medium text-lg'>Charity Program</h1>
-          <div className='flex items-center gap-5'>
+          <div className='flex items-center sm:mt-0 mt-5 gap-5'>
             <button onClick={() => setOpenNewProgram(true)} className='outline-none flex items-center gap-3 justify-center bg-secondary hover:bg-primary transition text-white text-sm rounded-lg py-3 px-4'>
               <FaHandHoldingHeart />
               <p>New Program</p>
@@ -26,8 +26,8 @@ const CharityProgram = () => {
             <RiFilter3Fill onClick={() => setOpenFilter(true)} className='cursor-pointer text-2xl' />
           </div>
         </div>
-        <div className='mt-8 flex flex-col gap-8 items-center'>
-          <div className='grid grid-cols-3 gap-8'>
+        <div className='mt-8 flex flex-col gap-8 items-center w-full lg:mb-0 mb-20'>
+          <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 w-full'>
             <FundraiserCard
               title='Fundraiser Title Will Goes Here Later'
               collectedFund={10000}
