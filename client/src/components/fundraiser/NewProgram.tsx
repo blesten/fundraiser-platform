@@ -73,6 +73,12 @@ const NewProgram = ({ openNewProgram, setOpenNewProgram }: IProps) => {
               <input type='number' id='goals' name='goals' className='outline-none flex-1 text-sm' min={1} />
             </div>
           </div>
+          <div className='mb-6'>
+            <label htmlFor='category' className='text-sm'>Category</label>
+            <select name='category' id='category' className='outline-none border border-gray-300 w-full rounded-lg text-sm p-3 mt-3'>
+              <option value=''>Environment</option>
+            </select>
+          </div>
           <div className='mb-7'>
             <label htmlFor='changesProposal' className='text-sm'>Changes Proposal</label>
             <textarea name='changesProposal' id='changesProposal' className='p-3 outline-none border border-gray-300 rounded-lg text-sm w-full mt-3 h-32 resize-none' />
