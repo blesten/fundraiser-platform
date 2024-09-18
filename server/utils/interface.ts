@@ -28,6 +28,7 @@ export interface IFundraiser extends IGeneralField {
   user: ObjectId
   requestProposal: string
   supportingDocument: string
+  status: string
 }
 
 export interface ICode extends IGeneralField {
