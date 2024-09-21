@@ -3,6 +3,8 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import { useState } from 'react'
 import { AuthType } from './../general/Navbar'
 import Button from './../general/Button'
+import Loader from '../general/Loader'
+import useStore from './../../store/store'
 
 interface IProps {
   setAuthScreen: React.Dispatch<React.SetStateAction<string>>
@@ -14,15 +16,22 @@ const SignIn = ({ setAuthScreen }: IProps) => {
     password: ''
   })
 
+  const [loading, setLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
+
+  const { login } = useStore()
 
   const handleChange = (e: FormChanged) => {
     const { name, value } = e.target
     setFormData({ ...formData, [name]: value })
   }
 
-  const handleSubmit = (e: FormSubmitted) => {
+  const handleSubmit = async(e: FormSubmitted) => {
+    setLoading(true)
     e.preventDefault()
+    await login(formData)
+    setAuthScreen('')
+    setLoading(false)
   }
   
   return (
@@ -49,7 +58,12 @@ const SignIn = ({ setAuthScreen }: IProps) => {
           </div>
           <p onClick={() => setAuthScreen(AuthType.ForgetPassword.toString())} className='text-blue-500 underline text-xs text-right mt-2 cursor-pointer'>Forget password?</p>
         </div>
-        <Button className='bg-secondary hover:bg-primary transition py-3 text-white w-full outline-none' content='Sign In' onClick={() => handleSubmit} />
+        <Button
+          disabled={loading || !formData.email || !formData.password}
+          className={`${loading || !formData.email || !formData.password ? 'bg-gray-200 hover:bg-gray-200 cursor-not-allowed' : 'bg-secondary hover:bg-primary cursor-pointer'} transition py-3 text-white w-full outline-none`}
+          content={loading ? <Loader /> : 'Sign In'}
+          onClick={() => handleSubmit}
+        />
         <p className='text-xs text-center mt-3 text-gray-400  '>Don&apos;t have an account yet? Click <span onClick={() => setAuthScreen(AuthType.SignUp.toString())} className='cursor-pointer text-blue-500 underline'>here</span></p>
       </form>
     </>

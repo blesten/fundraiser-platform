@@ -66,7 +66,7 @@ const userController = {
       res.cookie('fpc', refreshToken, {
         httpOnly: true,
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        path: '/api/v1/user/refresh_token'
+        path: '/api/v1/user/refreshToken'
       })
 
       return res.status(200).json({
@@ -119,7 +119,7 @@ const userController = {
   logout: async(req: Request, res: Response) => {
     try {
       res.clearCookie('fpc', {
-        path: '/api/v1/user/refresh_token'
+        path: '/api/v1/user/refreshToken'
       })
 
       return res.status(200).json({ msg: 'Logout success' })

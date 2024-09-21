@@ -1,0 +1,1 @@
+export const IGNORE_ERR = 'IGNORE_ERR'

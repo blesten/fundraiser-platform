@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { MdQuestionMark } from 'react-icons/md'
+import useStore from './../../store/store'
 
 interface IProps {
   openSignOut: boolean
@@ -8,6 +9,13 @@ interface IProps {
 
 const SignOut = ({ openSignOut, setOpenSignOut }: IProps) => {
   const signOutRef = useRef() as React.MutableRefObject<HTMLDivElement>
+
+  const { logout } = useStore()
+
+  const signOut = async() => {
+    await logout()
+    setOpenSignOut(false)
+  }
 
   useEffect(() => {
     const checkIfClickedOutside = (e: MouseEvent) => {
@@ -29,7 +37,7 @@ const SignOut = ({ openSignOut, setOpenSignOut }: IProps) => {
         <p className='text-center text-gray-600'>Are you sure want to sign out?</p>
         <div className='flex items-center gap-6 justify-center'>
           <button onClick={() => setOpenSignOut(false)} className='bg-gray-100 outline-none px-6 py-3 rounded-lg text-sm text-gray-400'>No, I&apos;m not</button>
-          <button className='bg-red-500 outline-none px-6 py-3 hover:bg-red-600 transition rounded-lg text-sm text-white'>Yes, I&apos;m sure</button>
+          <button onClick={signOut} className='bg-red-500 outline-none px-6 py-3 hover:bg-red-600 transition rounded-lg text-sm text-white'>Yes, I&apos;m sure</button>
         </div>
       </div>
     </div>
