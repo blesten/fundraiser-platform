@@ -1,4 +1,4 @@
-import { getDataAPI, postDataAPI } from "../utils/fetchData"
+import { getDataAPI, patchDataAPI, postDataAPI } from "../utils/fetchData"
 import { GlobalStoreState, IUserState } from "../utils/interface"
 
 interface ILoginData {
@@ -93,9 +93,27 @@ const userStore = (set: any) => {
         }, false, 'logout/error')
       }
     },
-    editProfile: async() => {
+    editProfile: async(name: string, avatar: File[], newAvatar: string, token: string) => {
+      const formData = new FormData()
+
+      formData.append('name', name)
+
+      if (avatar.length > 0)
+        formData.append('avatar', avatar[0])
+      else
+        formData.append('avatar', newAvatar)
+
       try {
-        
+        const res = await patchDataAPI('user/editProfile', formData, token)
+
+        set((state: GlobalStoreState) => {
+          state.userState.data = {
+            ...state.userState.data,
+            user: res.data.user
+          }
+          state.alertState.message = res.data.msg
+          state.alertState.type = 'success'
+        }, false, 'edit_profile/success')
       } catch (err: any) {
         set((state: GlobalStoreState) => {
           state.alertState.message = err.response.data.msg

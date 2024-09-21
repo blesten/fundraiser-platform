@@ -5,12 +5,19 @@ import morgan from 'morgan'
 import dotenv from 'dotenv'
 import connectDB from './config/db'
 import routers from './routes'
+import AWS from 'aws-sdk'
 
 dotenv.config({
   path: 'config/.env'
 })
 
 const app = express()
+
+AWS.config.update({
+  accessKeyId: process.env.AWS_ACCESS_KEY,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REGION
+})
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))

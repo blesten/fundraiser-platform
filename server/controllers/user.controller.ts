@@ -4,6 +4,7 @@ import { validEmail, validPassword } from '../utils/validator'
 import { generateToken } from '../utils/token'
 import jwt from 'jsonwebtoken'
 import User from '../models/User'
+import { uploadToBucket } from '../utils/helper'
 import bcrypt from 'bcrypt'
 
 const userController = {
@@ -128,7 +129,9 @@ const userController = {
     }
   },
   editProfile: async(req: IReqUser, res: Response) => {
-    const { name, avatar } = req.body
+    const file = req.file
+
+    const { name } = req.body
     if (!name)
       return res.status(400).json({ msg: 'Name should be filled' })
 
@@ -137,8 +140,13 @@ const userController = {
       if (!user)
         return res.status(401).json({ msg: 'Access denied' })
 
+      let result = null
+      if (file)
+        result = await uploadToBucket(file)
+      
       user.name = name
-      user.avatar = avatar
+      if (result && result.Location)
+        user.avatar = result.Location
       await user.save()
 
       return res.status(200).json({
