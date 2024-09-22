@@ -3,6 +3,8 @@ import { FaHandHoldingHeart, FaHeart } from 'react-icons/fa'
 import { Link, useLocation } from 'react-router-dom'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { BsFillKeyFill } from 'react-icons/bs'
+import { useNavigate } from 'react-router-dom'
+import { getDataAPI } from '../../utils/fetchData'
 import { MdLogout } from 'react-icons/md'
 import { FiEdit } from 'react-icons/fi'
 import Authentication from './../auth/Authentication'
@@ -37,9 +39,31 @@ const Navbar = () => {
 
   const { pathname } = useLocation()
 
+  const { userState, initiate } = useStore()
+  
   const profileDropdownRef = useRef() as React.MutableRefObject<HTMLDivElement>
 
-  const { userState } = useStore()
+  const navigate = useNavigate()
+
+  const handleSwitchAccount = async() => {
+    try {
+      const res = await getDataAPI('fundraiser', userState.data.accessToken)
+
+      if (Object.keys(res.data.fundraiser).length < 1) {
+        setOpenSwitchToFundraiser(true)
+      } else if (res.data.fundraiser.status === 'in_review' || res.data.fundraiser.status === 'rejected') {
+        if (res.data.fundraiser.status === 'in_review') {
+          initiate('Fundraiser account status is still in review', 'warning')
+        } else {
+          initiate('Fundraiser account status is rejected', 'error')
+        }
+      } else {
+        navigate('/dashboard')
+      }
+    } catch (err: any) {
+      initiate(err.response.data.msg, 'error')
+    }
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -127,7 +151,7 @@ const Navbar = () => {
                       <FaHeart className='text-gray-500' />
                       <p className='text-gray-500 font-medium text-sm'>My Donation</p>
                     </div>
-                    <div onClick={() => setOpenSwitchToFundraiser(true)} className='flex items-center gap-5 cursor-pointer w-fit'>
+                    <div onClick={handleSwitchAccount} className='flex items-center gap-5 cursor-pointer w-fit'>
                       <FaHandHoldingHeart className='text-gray-500' />
                       <p className='text-gray-500 font-medium text-sm'>Switch to Fundariser Account</p>
                     </div>

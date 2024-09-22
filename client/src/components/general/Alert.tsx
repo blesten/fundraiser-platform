@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react'
 import { IoCloseCircle } from 'react-icons/io5'
 import useStore from './../../store/store'
 import { IGNORE_ERR } from '../../utils/constant'
+import { BsExclamationCircleFill } from 'react-icons/bs'
 
 const Alert = () => {
   const alertRef = useRef() as React.MutableRefObject<HTMLDivElement>
@@ -18,7 +19,7 @@ const Alert = () => {
 
     document.addEventListener('mousedown', checkIfClickedOutside)
     return () => document.removeEventListener('mousedown', checkIfClickedOutside)
-  }, [])
+  }, [alertState.type, clear])
 
   return (
     <>
@@ -31,12 +32,14 @@ const Alert = () => {
               ? <IoCloseCircle className='text-9xl text-red-500' />
               : alertState.type === 'success'
                 ? <IoIosCheckmarkCircle className='text-9xl text-green-600' />
-                : ''
+                : alertState.type === 'warning'
+                  ? <BsExclamationCircleFill className='text-9xl text-orange-600' />
+                  : ''
             }
-            <p className='mt-4 font-bold'>{alertState.type === 'error' ? 'Operation Failed' : alertState.type === 'success' ? 'Operation Success' : ''}</p>
+            <p className='mt-4 font-bold'>{alertState.type === 'error' ? 'Operation Failed' : alertState.type === 'success' ? 'Operation Success' : alertState.type === 'warning' ? 'Operation In Review' : ''}</p>
             <p className='mt-2 text-sm text-gray-500 text-center'>{alertState.message}</p>
             <div className='mt-8'>
-              <button onClick={clear} className={`font-bold text-white px-6 py-3 rounded-md text-sm ${alertState.type === 'success' ? 'bg-green-500 hover:bg-green-600' : alertState.type === 'error' ? 'bg-red-500 hover:bg-red-600' : ''} transition`}>Close</button>
+              <button onClick={clear} className={`font-bold text-white px-6 py-3 rounded-md text-sm ${alertState.type === 'success' ? 'bg-green-500 hover:bg-green-600' : alertState.type === 'error' ? 'bg-red-500 hover:bg-red-600' : alertState.type === 'warning' ? 'bg-orange-500 hover:bg-orange-600' : ''} transition`}>Close</button>
             </div>
           </div>
         </div>

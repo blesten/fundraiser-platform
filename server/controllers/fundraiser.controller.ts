@@ -30,6 +30,14 @@ const fundraiserController = {
       return res.status(500).json({ msg: err.message })
     }
   },
+  read: async(req: IReqUser, res: Response) => {
+    try {
+      const fundraiser = await Fundraiser.findOne({ user: req.user?._id }).select('user status')
+      return res.status(200).json({ fundraiser: fundraiser || {} })
+    } catch (err: any) {
+      return res.status(500).json({ msg: err.message })
+    }
+  },
   updateStatus: async(req: IReqUser, res: Response) => {
     const { id } = req.params
     const { status } = req.body
