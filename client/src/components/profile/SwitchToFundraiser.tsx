@@ -1,8 +1,11 @@
-import { useState, useEffect, useRef } from 'react'
-import { AiOutlineClose } from 'react-icons/ai'
 import { FaFilePdf, FaHandHoldingHeart } from 'react-icons/fa'
+import { useState, useEffect, useRef } from 'react'
+import { FormChanged, FormSubmitted } from '../../utils/interface'
+import { AiOutlineClose } from 'react-icons/ai'
+import { postDataAPI } from '../../utils/fetchData'
+import useStore from './../../store/store'
 import Button from '../general/Button'
-import { FormChanged } from '../../utils/interface'
+import Loader from '../general/Loader'
 
 interface IProps {
   openSwitchToFundraiser: boolean
@@ -12,14 +15,37 @@ interface IProps {
 const SwitchToFundraiser = ({ openSwitchToFundraiser, setOpenSwitchToFundraiser }: IProps) => {
   const [proposal, setProposal] = useState('')
   const [supportingDocument, setSupportingDocument] = useState<File[]>([])
+  const [loading, setLoading] = useState(false)
 
   const fileRef = useRef() as React.MutableRefObject<HTMLInputElement>
   const switchToFundraiserRef = useRef() as React.MutableRefObject<HTMLDivElement>
+
+  const { userState, initiate } = useStore()
 
   const handleChangeFile = (e: FormChanged) => {
     const target = e.target as HTMLInputElement
     const files = Array.from(target.files || [])
     setSupportingDocument(files)
+  }
+
+  const handleSubmit = async(e: FormSubmitted) => {
+    e.preventDefault()
+    setLoading(true)
+
+    try {
+      const formData = new FormData()
+
+      formData.append('requestProposal', proposal)
+      formData.append('supportingDocument', supportingDocument[0])
+
+      const res = await postDataAPI('fundraiser', formData, userState.data.accessToken)
+      initiate(res.data.msg, 'success')
+    } catch (err: any) {
+      initiate(err.response.data.msg, 'error')
+    } finally {
+      setOpenSwitchToFundraiser(false)
+      setLoading(false)
+    }
   }
 
   useEffect(() => {
@@ -43,10 +69,10 @@ const SwitchToFundraiser = ({ openSwitchToFundraiser, setOpenSwitchToFundraiser 
           </div>
           <AiOutlineClose onClick={() => setOpenSwitchToFundraiser(false)} className='text-gray-500 cursor-pointer' />
         </div>
-        <form className='px-6 py-5'>
+        <form onSubmit={handleSubmit} className='px-6 py-5'>
           <div className='mb-6'>
             <label htmlFor='proposal' className='text-sm font-medium'>Request Proposal</label>
-            <textarea name='proposal' id='proposal' className='p-3 outline-none border border-gray-300 text-sm rounded-lg mt-3 w-full resize-none h-52' placeholder='Min. 200 words' />
+            <textarea name='proposal' id='proposal' value={proposal} onChange={e => setProposal(e.target.value)} className='p-3 outline-none border border-gray-300 text-sm rounded-lg mt-3 w-full resize-none h-52' placeholder='Min. 200 words' />
           </div>
           <div className='mb-8'>
             <label htmlFor='document' className='font-medium text-sm'>Supporting Document</label>
@@ -69,7 +95,12 @@ const SwitchToFundraiser = ({ openSwitchToFundraiser, setOpenSwitchToFundraiser 
             </div>
             <input ref={fileRef} onChange={handleChangeFile} type='file' className='hidden' multiple={false} accept='.pdf' />
           </div>
-          <Button className='bg-secondary hover:bg-primary transition text-white text-sm font-medium w-full py-3' content='Send Request' onClick={() => {}} />
+          <Button
+            disabled={loading || proposal.split(' ').length < 201 || supportingDocument.length < 1}
+            className={`${loading || proposal.split(' ').length < 201 || supportingDocument.length < 1 ? 'bg-gray-200 hover:bg-gray-200 cursor-not-allowed' : 'bg-secondary hover:bg-primary cursor-pointer'} transition text-white text-sm font-medium w-full py-3`}
+            content={loading ? <Loader /> : 'Send Request'}
+            onClick={() => handleSubmit}
+          />
         </form>
       </div>
     </div>

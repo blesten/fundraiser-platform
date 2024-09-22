@@ -1,9 +1,11 @@
 import { S3 } from 'aws-sdk'
-import path from 'path'
 import AWS from 'aws-sdk'
 import fs from 'fs'
+import { promisify } from 'util'
 
-export const uploadToBucket = (file: Express.Multer.File) => {
+const unlinkFile = promisify(fs.unlink)
+
+export const uploadToBucket = async(file: Express.Multer.File) => {
   const s3 = new AWS.S3()
   const fileStream = fs.createReadStream(file.path)
 
@@ -14,5 +16,12 @@ export const uploadToBucket = (file: Express.Multer.File) => {
     ContentType: file.mimetype
   }
 
-  return s3.upload(params).promise()
+  try {
+    const result = await s3.upload(params).promise()
+    await unlinkFile(file.path)
+    return result
+  } catch (err: any) {
+    console.error('Error uploading file to S3:', err)
+    throw new Error('File upload to S3 failed')
+  }
 }

@@ -1,11 +1,14 @@
 import Fundraiser from '../models/Fundraiser'
+import { uploadToBucket } from '../utils/helper'
 import { IReqUser } from './../utils/interface'
 import { Response } from 'express'
 
 const fundraiserController = {
   create: async(req: IReqUser, res: Response) => {
-    const { requestProposal, supportingDocument } = req.body
-    if (!requestProposal || !supportingDocument)
+    const file = req.file
+
+    const { requestProposal } = req.body
+    if (!requestProposal || !file)
       return res.status(400).json({ msg: 'Please provide required field to create fundraiser account' })
     
     try {
@@ -13,10 +16,12 @@ const fundraiserController = {
       if (isFundraiserExists)
         return res.status(400).json({ msg: `${req.user?.email} account was already registered as a fundraiser` })
 
+      const result = await uploadToBucket(file)
+
       const fundraiser = new Fundraiser({
         user: req.user?._id,
         requestProposal,
-        supportingDocument
+        supportingDocument: result.Location
       })
       await fundraiser.save()
 
