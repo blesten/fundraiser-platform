@@ -43,10 +43,10 @@ const Category = () => {
             </tbody>
           </table>
         </div>
-        <Pagination
+        {/* <Pagination
           currentPage={1}
           totalPage={15}
-        />
+        /> */}
       </AdminAccount>
 
       <NewCategory

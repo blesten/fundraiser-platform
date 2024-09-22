@@ -29,5 +29,8 @@ app.use('/api/v1/fundraiser', routers.fundraiser)
 app.use('/api/v1/user', routers.user)
 app.use('/api/v1/code', routers.code)
 
+
 connectDB()
+require('./scheduler/fundraiserApprovalScheduler')
+
 app.listen(process.env.PORT, () => console.log(`Server is running on PORT ${process.env.PORT}`))

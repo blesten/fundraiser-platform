@@ -7,8 +7,11 @@ const router = express.Router()
 const upload = multer({ dest: 'uploads/' })
 
 router.route('/')
-  .get(isAuthenticated, fundraiserController.read)
+  .get(isAuthenticated, fundraiserController.readByUser)
   .post(isAuthenticated, upload.single('supportingDocument'), fundraiserController.create)
+
+router.route('/admin').get(isAuthenticated, authorizeRoles('admin'), fundraiserController.read)
+
 router.route('/:id').patch(isAuthenticated, authorizeRoles('admin'), fundraiserController.updateStatus)
 
 export default router

@@ -55,7 +55,7 @@ const Navbar = () => {
         if (res.data.fundraiser.status === 'in_review') {
           initiate('Fundraiser account status is still in review', 'warning')
         } else {
-          initiate('Fundraiser account status is rejected', 'error')
+          initiate('Fundraiser account status is rejected. Please wait 24 hours to register again', 'error')
         }
       } else {
         navigate('/dashboard')

@@ -12,6 +12,7 @@ export interface IGeneralField {
 export interface GlobalStoreState {
   alertState: IAlertState
   userState: IUserState
+  fundraiserApprovalState: IFundraiserApprovalState
 }
 
 export interface IAlertState {
@@ -24,7 +25,7 @@ export interface IUserState {
   loading: boolean
 }
 
-export interface IUser {
+export interface IUser extends IGeneralField {
   name: string
   email: string
   password: string
@@ -35,4 +36,17 @@ export interface IUser {
 export interface ILoginResponse {
   user: IUser
   accessToken: string
+}
+
+export interface IFundraiserApprovalState {
+  data: IFundraiserApproval[]
+  totalPage: number
+  loading: boolean
+}
+
+export interface IFundraiserApproval extends IGeneralField {
+  user: IUser
+  requestProposal: string
+  supportingDocument: string
+  status: string
 }

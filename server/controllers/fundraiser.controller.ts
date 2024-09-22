@@ -1,7 +1,8 @@
 import Fundraiser from '../models/Fundraiser'
 import { uploadToBucket } from '../utils/helper'
+import { pagination } from '../utils/pagination'
 import { IReqUser } from './../utils/interface'
-import { Response } from 'express'
+import { Request, Response } from 'express'
 
 const fundraiserController = {
   create: async(req: IReqUser, res: Response) => {
@@ -30,7 +31,67 @@ const fundraiserController = {
       return res.status(500).json({ msg: err.message })
     }
   },
-  read: async(req: IReqUser, res: Response) => {
+  read: async(req: Request, res: Response) => {
+    try {
+      const { skip, limit } = pagination(req)
+      
+      const dataAggregation: any[] = [
+        {
+          $lookup: {
+            from: 'users',
+            localField: 'user',
+            foreignField: '_id',
+            as: 'user',
+          }
+        },
+        { $unwind: '$user' },
+        { $sort: { createdAt: -1 } },
+        { $skip: skip },
+        { $limit: limit }
+      ]
+
+      const countAggregation: any[] = [
+        { $count: 'count' }
+      ]
+
+      const data = await Fundraiser.aggregate([
+        {
+          $facet: {
+            totalData: dataAggregation,
+            totalCount: countAggregation
+          }
+        },
+        {
+          $project: {
+            count: { $arrayElemAt: ['$totalCount.count', 0] },
+            totalData: 1
+          }
+        }
+      ])
+
+      const fundraisers = data[0].totalData
+      const totalFundraisers = data[0].count
+      let totalPage = 0
+
+      if (fundraisers.length === 0) {
+        totalPage = 0
+      } else {
+        if (totalFundraisers % limit === 0) {
+          totalPage = totalFundraisers / limit
+        } else {
+          totalPage = Math.floor(totalFundraisers / limit) + 1
+        }
+      }
+
+      return res.status(200).json({
+        fundraisers,
+        totalPage
+      })
+    } catch (err: any) {
+      return res.status(500).json({ msg: err.message })
+    }
+  },
+  readByUser: async(req: IReqUser, res: Response) => {
     try {
       const fundraiser = await Fundraiser.findOne({ user: req.user?._id }).select('user status')
       return res.status(200).json({ fundraiser: fundraiser || {} })

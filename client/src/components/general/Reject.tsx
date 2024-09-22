@@ -4,10 +4,16 @@ import { MdQuestionMark } from 'react-icons/md'
 interface IProps {
   openReject: boolean
   setOpenReject: React.Dispatch<React.SetStateAction<boolean>>
+  onSuccess?: () => {}
 }
 
-const Reject = ({ openReject, setOpenReject }: IProps) => {
+const Reject = ({ openReject, setOpenReject, onSuccess }: IProps) => {
   const rejectRef = useRef() as React.MutableRefObject<HTMLDivElement>
+
+  const handleConfirm = () => {
+    onSuccess!()
+    setOpenReject(false)
+  }
 
   useEffect(() => {
     const checkIfClickedOutside = (e: MouseEvent) => {
@@ -29,7 +35,7 @@ const Reject = ({ openReject, setOpenReject }: IProps) => {
         <p className='text-center text-gray-600'>Are you sure to reject?</p>
         <div className='flex items-center gap-6 justify-center'>
           <button onClick={() => setOpenReject(false)} className='bg-gray-100 outline-none px-6 py-3 rounded-lg text-sm text-gray-400'>No, I&apos;m not</button>
-          <button className='bg-red-500 outline-none px-6 py-3 hover:bg-red-600 transition rounded-lg text-sm text-white'>Yes, I&apos;m sure</button>
+          <button onClick={handleConfirm} className='bg-red-500 outline-none px-6 py-3 hover:bg-red-600 transition rounded-lg text-sm text-white'>Yes, I&apos;m sure</button>
         </div>
       </div>
     </div>
