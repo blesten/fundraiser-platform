@@ -4,10 +4,16 @@ import { MdQuestionMark } from 'react-icons/md'
 interface IProps {
   openDelete: boolean
   setOpenDelete: React.Dispatch<React.SetStateAction<boolean>>
+  onSuccess?: () => {}
 }
 
-const Delete = ({ openDelete, setOpenDelete }: IProps) => {
+const Delete = ({ openDelete, setOpenDelete, onSuccess }: IProps) => {
   const deleteRef = useRef() as React.MutableRefObject<HTMLDivElement>
+
+  const handleConfirm = async() => {
+    await onSuccess!()
+    setOpenDelete(false)
+  }
 
   useEffect(() => {
     const checkIfClickedOutside = (e: MouseEvent) => {
@@ -29,7 +35,7 @@ const Delete = ({ openDelete, setOpenDelete }: IProps) => {
         <p className='text-gray-700'>Are you sure to delete data?</p>
         <div className='flex items-center gap-4'>
           <button onClick={() => setOpenDelete(false)} className='bg-gray-100 outline-none px-6 py-3 rounded-lg text-sm text-gray-400'>No, I&apos;m not</button>
-          <button className='bg-red-500 outline-none px-6 py-3 hover:bg-red-600 transition rounded-lg text-sm text-white'>Yes, I&apos;m sure</button>
+          <button onClick={handleConfirm} className='bg-red-500 outline-none px-6 py-3 hover:bg-red-600 transition rounded-lg text-sm text-white'>Yes, I&apos;m sure</button>
         </div>
       </div>
     </div>

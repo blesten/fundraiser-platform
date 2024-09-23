@@ -28,7 +28,7 @@ app.use(cookieParser())
 app.use('/api/v1/fundraiser', routers.fundraiser)
 app.use('/api/v1/user', routers.user)
 app.use('/api/v1/code', routers.code)
-
+app.use('/api/v1/category', routers.category)
 
 connectDB()
 require('./scheduler/fundraiserApprovalScheduler')

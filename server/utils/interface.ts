@@ -41,3 +41,7 @@ export interface IToken extends IGeneralField {
   user: ObjectId
   token: string
 }
+
+export interface ICategory extends IGeneralField {
+  title: string
+}

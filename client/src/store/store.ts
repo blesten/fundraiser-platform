@@ -1,12 +1,14 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
-import alertStore from './alertStore'
 import userStore from './userStore'
+import alertStore from './alertStore'
+import categoryStore from './categoryStore'
 import fundraiserApprovalStore from './fundraiserApprovalStore'
 
 let combineStores = (set: any) => ({
-  ...alertStore(set),
   ...userStore(set),
+  ...alertStore(set),
+  ...categoryStore(set),
   ...fundraiserApprovalStore(set)
 })
 

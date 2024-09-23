@@ -13,6 +13,7 @@ export interface GlobalStoreState {
   alertState: IAlertState
   userState: IUserState
   fundraiserApprovalState: IFundraiserApprovalState
+  categoryState: ICategoryState
 }
 
 export interface IAlertState {
@@ -49,4 +50,13 @@ export interface IFundraiserApproval extends IGeneralField {
   requestProposal: string
   supportingDocument: string
   status: string
+}
+
+export interface ICategoryState {
+  data: ICategory[]
+  loading: boolean
+}
+
+export interface ICategory extends IGeneralField {
+  title: string
 }
